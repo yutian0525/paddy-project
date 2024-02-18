@@ -2,6 +2,14 @@
 <template>
   <div class="screen">
     <div class="section">
+      <img src="./icons/介绍.png" alt="本地图片" class="my-image" />
+      <h2 class="title">项目介绍</h2>
+      <div class="textbox">
+        <p class="text">填写项目的介绍。</p>
+      </div>
+      <button class="mbutton" @click="goToPage('ProjectIntroduction')"> ➜ </button>
+    </div>
+    <div class="section">
       <img src="./icons/水稻.png" alt="本地图片" class="my-image" />
       <h2 class="title">数字水稻</h2>
       <div class="textbox">
