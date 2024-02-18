@@ -34,25 +34,111 @@
       <button class="mbutton" @click="goToPage('DiseasePredict')"> ➜ </button>
     </div>
     <div class="section">
-      <div>
+      <div v-if="!userid">
         <h2 class="title">用户登录</h2>
-        
+        <div style="height: 30px;"></div>
+          <div class="form-group">
+            <img src="./icons/用户名.png" alt="p" class="miniimg" />
+            <input class="myinputbox" type="text" id="iusername" v-model="username" required placeholder="请输入用户名" />
+          </div>
+          <div class="form-group">
+            <img src="./icons/密码.png" alt="p" class="miniimg" />
+            <input class="myinputbox" type="password" id="password" v-model="password" required placeholder="请输入密码" />
+          </div>
+          <div style="height: 30px;"></div>
+        <button class="thebutton" @click="login">登录</button>
+      </div>
+      <div v-if="userid">
+        <img :src="userimgurl" alt="头像" class="userimg" />
+        <p style="color: #eeeeee;font-size: 26px;">{{ username }}</p>
+        <button class="thebutton" @click="logout">退出登录</button>
       </div>
     </div>
   </div>
 </template>
   
 <script>
+import axios from 'axios';
 export default {
+  data() {
+    return {
+      userid: null,
+      userimgurl: null,
+      username: null,
+    };
+  },
   methods: {
     goToPage(page) {
       this.$router.push('/' + page)
+    },
+    logout() {
+      this.userid = null;
+      this.userimgurl = null;
+      this.username = null;
+    },
+    async login() {
+      console.log(iusername.value);
+      console.log(password.value);
+
+      try {
+        const response = await axios.post('http://localhost:5000/userlogin', { username: iusername.value, password: password.value });
+        console.log(response.data);
+        this.userid = response.data.id;
+        this.userimgurl = response.data.imgurl;
+        this.username = "Nilei";
+      } catch (error) {
+        console.error('Error:', error);
+      }
     }
   }
 }
 </script>
   
 <style>
+.form-group{
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-items: center;
+}
+.miniimg{
+  width: 33px;
+  /* 设置图片宽度为200像素 */
+  height: auto;
+  /* 或者固定高度：height: 200px; 如果要保持原始比例，则保留auto */
+  object-fit: cover;
+  margin-right: 20px;
+  margin-left: 40px;
+}
+.myinputbox{
+  width: 170px;
+  height: 25px;
+  align-items: center;
+      /* 改变边框颜色和宽度 */
+      border: 2px solid #ccc;
+    
+    /* 设置背景色 */
+    background-color: #393e46;
+
+    /* 改变字体大小 */
+    font-size: 18px;
+  color: #eeeeee;
+
+    /* 圆角效果 */
+    border-radius: 5px;
+  padding-left: 10px;
+    /* 当鼠标悬停时的样式 */
+    &:hover {
+      background-color: #3f4247;
+    }
+
+    /* 当聚焦时的样式 */
+    &:focus {
+      outline: none; /* 移除默认轮廓线 */
+      background-color: #222831; /* 更改焦点时的边框颜色 */
+    }
+
+}
 .screen {
   display: flex;
   height: 98vh;
@@ -81,9 +167,9 @@ export default {
     border-color: chocolate;*/
   height: 450px;
   width: 320px;
-  margin-left: 20px;
+  margin-left: 15px;
   /* 设置左边外部间距 */
-  margin-right: 20px;
+  margin-right: 15px;
   /* 设置右边外部间距 */
   text-align: center;
   /* 水平居中 */
@@ -163,6 +249,21 @@ export default {
   &:active {
     background-color: #707A89;
   }
+}
+
+.userimg {
+  width: 170px;
+  /* 设置图片宽度为200像素 */
+  height: 170px;
+  /* 或者固定高度：height: 200px; 如果要保持原始比例，则保留auto */
+  object-fit: cover;
+  /* 保持图片宽高比且填满容器 */
+  margin-top: 50px;
+  /* 设置上边距为20像素 */
+  border-radius: 50%;
+  /* 将边框半径设置为50%以实现圆形效果 */
+  overflow: hidden;
+  /* 隐藏可能超出圆形部分的内容 */
 }
 
 body {
