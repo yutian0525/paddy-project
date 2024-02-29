@@ -42,6 +42,7 @@ export default {
                 this.$userid.value = response.data.id;
                 this.$userimgurl.value = response.data.imgurl;
                 this.$username.value = "Nilei";
+                this.$router.push('/');
             } catch (error) {
                 console.error('Error:', error);
             }

@@ -61,15 +61,6 @@ export default {
   justify-items: center;
 }
 
-.miniimg {
-  width: 33px;
-  /* 设置图片宽度为200像素 */
-  height: auto;
-  /* 或者固定高度：height: 200px; 如果要保持原始比例，则保留auto */
-  object-fit: cover;
-  margin-right: 20px;
-  margin-left: 40px;
-}
 
 .myinputbox {
   width: 170px;
@@ -216,19 +207,14 @@ export default {
   }
 }
 
-.userimg {
-  width: 170px;
+.miniimg {
+  width: 33px;
   /* 设置图片宽度为200像素 */
-  height: 170px;
+  height: auto;
   /* 或者固定高度：height: 200px; 如果要保持原始比例，则保留auto */
   object-fit: cover;
-  /* 保持图片宽高比且填满容器 */
-  margin-top: 50px;
-  /* 设置上边距为20像素 */
-  border-radius: 50%;
-  /* 将边框半径设置为50%以实现圆形效果 */
-  overflow: hidden;
-  /* 隐藏可能超出圆形部分的内容 */
+  margin-right: 20px;
+  margin-left: 40px;
 }
 
 body {
