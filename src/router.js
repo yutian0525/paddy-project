@@ -6,6 +6,7 @@ import GrowPredict from './views/GrowPredict.vue'
 import DiseasePredict from './views/DiseasePredict.vue'
 import ProjectIntroduction from './views/ProjectIntroduction.vue'
 import Loginpage from './views/Loginpage.vue'
+import RegisterPage from './views/RegisterPage.vue'
 
 const routes = [
   { path: '/', component: Home },
@@ -13,7 +14,8 @@ const routes = [
   { path: '/GrowPredict', component: GrowPredict },
   { path: '/DiseasePredict', component: DiseasePredict },
   { path: '/ProjectIntroduction', component: ProjectIntroduction },
-  { path: '/Loginpage', component: Loginpage }
+  { path: '/Loginpage', component: Loginpage },
+  { path: '/RegisterPage',component: RegisterPage}
 ]
 
 const router = createRouter({

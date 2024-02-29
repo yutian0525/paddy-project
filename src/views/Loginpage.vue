@@ -14,6 +14,7 @@
             </div>
             <div style="height: 30px;"></div>
             <button class="thebutton" @click="login">登录</button>
+            <button class="thebutton" @click="register">注册</button>
         </div>
     </div>
 </template>
@@ -44,6 +45,9 @@ export default {
             } catch (error) {
                 console.error('Error:', error);
             }
+        },
+        register(){
+          this.$router.push('/RegisterPage')
         }
     }
 }
