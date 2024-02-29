@@ -40,9 +40,10 @@ export default {
       } else {
         try {
           const response = await axios.post('http://localhost:5000/usersignup', userData);
-          if (response.status === 200 && response.data.code===200) {
+          if (response.status === 200) {
             console.log(response.data);
-            alert("注册成功")
+            alert("注册成功");
+            this.$router.push('/Loginpage');
           }
         }
         catch (error)
