@@ -7,7 +7,7 @@ import DiseasePredict from './views/DiseasePredict.vue'
 import ProjectIntroduction from './views/ProjectIntroduction.vue'
 import Loginpage from './views/Loginpage.vue'
 import RegisterPage from './views/RegisterPage.vue'
-
+import UserPage from './views/UserPage.vue'
 const routes = [
   { path: '/', component: Home },
   { path: '/DigitalPaddy', component: DigitalPaddy },
@@ -15,7 +15,8 @@ const routes = [
   { path: '/DiseasePredict', component: DiseasePredict },
   { path: '/ProjectIntroduction', component: ProjectIntroduction },
   { path: '/Loginpage', component: Loginpage },
-  { path: '/RegisterPage',component: RegisterPage}
+  { path: '/RegisterPage',component: RegisterPage},
+  { path:'/UserPage',component:UserPage}
 ]
 
 const router = createRouter({

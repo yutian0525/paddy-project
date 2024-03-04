@@ -11,7 +11,7 @@
       </div>
       <div style="display: flex; " v-if="$userid.value">
         <p style="color: #eeeeee;">{{ $username.value }}</p>
-        <img :src="$userimgurl.value" alt="pic" class="userimg" />
+        <img :src="$userimgurl.value" @click="gotouserpage" alt="pic" class="userimg" />
         <div class="dropdown">
           <button @click="toggleDropdown" ref="trigger">点击我</button>
 
@@ -52,7 +52,9 @@ export default {
         this.isDropdownOpen = false;
       }
     },
-
+    gotouserpage(){
+      this.$router.push('/UserPage')
+    }
   }
 }
 </script>
@@ -73,7 +75,12 @@ export default {
   margin-left: 20px;
   margin-right: 30px;
 }
-
+body{
+  margin-left: 0px;
+  margin-right: 0px;
+  margin-top:0px ;
+  margin-bottom:0px ;
+}
 .dropdown-content {
   display: flex;
   position: absolute;
