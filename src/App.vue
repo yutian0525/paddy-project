@@ -12,15 +12,8 @@
       <div style="display: flex; " v-if="$userid.value">
         <p style="color: #eeeeee;">{{ $username.value }}</p>
         <img :src="$userimgurl.value" @click="gotouserpage" alt="pic" class="userimg" />
-        <div class="dropdown">
-          <button @click="toggleDropdown" ref="trigger">点击我</button>
-
-        </div>
       </div>
     </div>
-  </div>
-  <div v-show="isDropdownOpen" class="dropdown-content" ref="dropdown">
-    <li v-for="(item, index) in items" :key="index">{{ item }}</li>
   </div>
   <router-view />
 </template>
