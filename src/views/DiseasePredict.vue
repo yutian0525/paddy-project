@@ -54,7 +54,7 @@ export default {
         const formData = new FormData();
         formData.append('file', this.selectedImage);
 
-        const response = await axios.post('http://127.0.0.1:5000/upload_disease_image', formData, {
+        const response = await axios.post('http://127.0.0.1:5000/DiseaseImage', formData, {
           headers: {
             'Content-Type': 'multipart/form-data'
           }

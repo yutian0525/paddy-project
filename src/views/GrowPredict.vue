@@ -55,13 +55,13 @@ export default {
                 const formData = new FormData();
                 formData.append('file', this.selectedImage);
 
-                const response = await axios.post('http://127.0.0.1:5000/upload_grow_image', formData, {
+                const response = await axios.post('http://127.0.0.1:5000/grow_image', formData, {
                     headers: {
                         'Content-Type': 'multipart/form-data'
                     }
                 });
 
-                this.imageUrl = "http://127.0.0.1:5000/show_grow_image/" + response.data.data;
+                this.imageUrl = "http://127.0.0.1:5000/ShowGrowImage/" + response.data.data;
                 this.imgname = response.data.data
                 console.log(this.imageUrl);
             } catch (error) {
