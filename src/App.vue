@@ -52,22 +52,7 @@ export default {
 }
 </script>
 <style>
-.userimg {
-  width: 46px;
-  /* 设置图片宽度为200像素 */
-  height: 46px;
-  /* 或者固定高度：height: 200px; 如果要保持原始比例，则保留auto */
-  object-fit: cover;
-  /* 保持图片宽高比且填满容器 */
-  margin-top: 4px;
-  /* 设置上边距为20像素 */
-  border-radius: 50%;
-  /* 将边框半径设置为50%以实现圆形效果 */
-  overflow: hidden;
-  /* 隐藏可能超出圆形部分的内容 */
-  margin-left: 20px;
-  margin-right: 30px;
-}
+
 body{
   margin-left: 0px;
   margin-right: 0px;
@@ -85,48 +70,7 @@ body{
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
 }
 
-.loginbutton {
-  display: inline-block;
-  /* 或者inline-flex等布局方式 */
-  padding: 1px 1px;
-  /* 内边距 */
-  font-size: 14px;
-  color: #ffffff;
-  background-color: #00adb5;
-  /* 背景颜色 */
-  border: none;
-  border-radius: 23px;
-  cursor: pointer;
-  text-align: center;
-  text-decoration: none;
-  margin-top: 4px;
-  margin-bottom: 5px;
-  margin-left: 20px;
-  margin-right: 30px;
-  width: 46px;
-  height: 46px;
-  transition: all 0.2s ease;
 
-  &:hover {
-    background-color: #008086;
-    /* 鼠标悬停时的背景色 */
-    cursor: pointer;
-  }
 
-  &:active {
-    background-color: #00565a;
-  }
-}
 
-.bar {
-  display: flex;
-  position: fixed;
-  align-items: center;
-  top: 0;
-  left: 0;
-  height: 55px;
-  width: 100%;
-  background-color: #3B4554;
-  z-index: 10;
-}
 </style>

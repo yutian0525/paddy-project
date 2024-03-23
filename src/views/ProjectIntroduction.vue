@@ -40,34 +40,4 @@ export default {
 }
 </script>
 <style>
-.secondtitle {
-  color: #00adb5;
-  font-size: 25px;
-  margin-top: 18px;
-  margin-bottom: 10px;
-}
-
-.introductionframe {
-  width: 1200px;
-  background-color: #393e46;
-  border-radius: 10px;
-  animation-name: fadeIn;
-  margin-bottom: 50px;
-  /* 使用上面定义的fadeIn动画 */
-  animation-duration: 0.5s;
-  /* 动画持续时间为1秒 */
-  animation-fill-mode: both;
-  /* 动画结束后保持最后的关键帧状态（此处为完全不透明） */
-  animation-timing-function: ease-in-out;
-  /* 动画速度曲线，这里采用平滑过渡 */
-}
-
-.sentence {
-  color: #ffffff;
-  font-size: 18px;
-  margin-top: 5px;
-  margin-bottom: 5px;
-  text-indent: 2em;
-  line-height: 1.9;
-}
 </style>

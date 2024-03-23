@@ -1,0 +1,32 @@
+.myinputbox {
+    width: 170px;
+    height: 25px;
+    align-items: center;
+    /* 改变边框颜色和宽度 */
+    border: 2px solid #ccc;
+  
+    /* 设置背景色 */
+    background-color: #393e46;
+  
+    /* 改变字体大小 */
+    font-size: 18px;
+    color: #eeeeee;
+  
+    /* 圆角效果 */
+    border-radius: 5px;
+    padding-left: 10px;
+  
+    /* 当鼠标悬停时的样式 */
+    &:hover {
+      background-color: #3f4247;
+    }
+  
+    /* 当聚焦时的样式 */
+    &:focus {
+      outline: none;
+      /* 移除默认轮廓线 */
+      background-color: #222831;
+      /* 更改焦点时的边框颜色 */
+    }
+  
+  }

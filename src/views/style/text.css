@@ -1,0 +1,42 @@
+.title {
+  color: #00adb5;
+  margin-left: 20px;
+  /* 设置左边外部间距 */
+  margin-right: 30px;
+  /* 设置右边外部间距 */
+  margin-top: 20px;
+  /* 设置上边距为20像素 */
+  font-size: 28px;
+}
+
+.text {
+  color: #eeeeee;
+  text-indent: 2em;
+  margin-left: 20px;
+  /* 设置左边外部间距 */
+  margin-right: 20px;
+  /* 设置右边外部间距 */
+}
+
+.username {
+  text-align: center;
+  margin-top: 0px;
+  color: #eeeeee;
+  font-size: 40px;
+}
+
+.sentence {
+  color: #ffffff;
+  font-size: 18px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  text-indent: 2em;
+  line-height: 1.9;
+}
+
+.secondtitle {
+  color: #00adb5;
+  font-size: 25px;
+  margin-top: 18px;
+  margin-bottom: 10px;
+}

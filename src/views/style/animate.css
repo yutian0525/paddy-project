@@ -1,0 +1,41 @@
+@keyframes userfadeIn {
+    0% {
+        opacity: 0;
+        /* 动画开始时，div是完全透明的 */
+        transform: translateX(-50%);
+    }
+
+    100% {
+        opacity: 1;
+        /* 动画结束时，div变为完全不透明 */
+        transform: translateX(0);
+    }
+}
+
+@keyframes fadeInAndScale {
+    0% {
+        opacity: 0;
+        transform: scale(0.3);
+        /* 初始缩放比例，这里设置为10%大小 */
+    }
+
+    100% {
+        opacity: 1;
+        transform: scale(1);
+        /* 动画结束时，元素恢复到正常尺寸（100%） */
+    }
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        /* 动画开始时，div是完全透明的 */
+        transform: translateY(-50%);
+    }
+
+    100% {
+        opacity: 1;
+        /* 动画结束时，div变为完全不透明 */
+        transform: translateY(0);
+    }
+}

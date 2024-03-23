@@ -1,10 +1,19 @@
-// main.js
-import { createApp,ref  } from 'vue'
-import App from './App.vue'
+import { createApp,ref } from 'vue'
+import ElementPlus from 'element-plus'
 import router from './router'
-const app = createApp(App);
+import 'element-plus/dist/index.css'
+import '@/views/style/button.css'
+import '@/views/style/img.css'
+import '@/views/style/inputbox.css'
+import '@/views/style/div.css'
+import '@/views/style/text.css'
+import '@/views/style/animate.css'
+import App from './App.vue'
 
+const app = createApp(App)
 app.config.globalProperties.$userid = ref(null);
 app.config.globalProperties.$userimgurl = ref(null);
 app.config.globalProperties.$username = ref(null);
-app.use(router).mount('#app')
+app.use(ElementPlus)
+app.use(router)
+app.mount('#app')
