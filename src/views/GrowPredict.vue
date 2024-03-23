@@ -75,9 +75,9 @@ export default {
                 //formData.append('imageid', this.imageUrl);
                 //formData.append('modelid', 1);
                 console.log({ imageid: this.imgname, modelid: "1" })
-                const response = await axios.post('http://localhost:5000/predict_image', { imageid: this.imgname, modelid: "1" });
+                const response = await axios.post('http://localhost:5000/PredictImage', { imageid: this.imgname, modelid: "1" });
 
-                this.imageUrl = "http://127.0.0.1:5000/show_predict_grow_image/" + this.imgname;
+                this.imageUrl = "http://127.0.0.1:5000/ShowPredictGrowImage" + this.imgname;
                 this.predictedImg = this.imageUrl;
                 this.result = response.data;
             } catch (error) {
