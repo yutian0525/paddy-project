@@ -29,6 +29,10 @@
     width: 100%;
     height: auto;
 }
+.halfimg{
+    width: 38%;
+    height: auto;
+}
 .pic {
     height: 450px;
     width: 450px;
