@@ -3,10 +3,17 @@
   <div class="bar">
     <img @click="gotohome" src="./views/icons/ico.png" alt="本地图片"
       style="cursor: pointer;width: 31px;height: 31px;margin-top: 0px;margin-left: 20px;" />
-    <h3 @click="gotohome" style="cursor: pointer;color: #eeeeee;margin-left: 20px;">基于深度学习的水稻生长识别与监测系统</h3>
+    <h3 @click="gotohome" style="cursor: pointer;color: #eeeeee;margin-left: 20px;">智慧稻田大数据系统</h3>
+    <div style="display: flex;height: 55px;justify-content: left;margin-left: 50px;">
+    <button class="barbutton" style="color:#46cdcf">首页</button>
+    <button class="barbutton">关于水稻</button>
+    <button class="barbutton">产品介绍</button>
+    <button class="barbutton">帮助支持</button>
+    <button class="barbutton">相关链接</button>
+    </div>
     <div style="display: flex; flex: 1;height: 55px;justify-content: right;">
       <div style="display: flex; " v-if="!$userid.value">
-        <p style="color: #eeeeee;">访客模式</p>
+        <p style="color: #eeeeee;">访客</p>
         <button class="loginbutton" @click="gologinpage">登录</button>
       </div>
       <div style="display: flex; " v-if="$userid.value">

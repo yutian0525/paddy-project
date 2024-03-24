@@ -22,6 +22,29 @@
     }
 }
 
+.barbutton{
+    font-size: 15px;
+    color: #8785a2;
+    background-color: #393e46;
+    align-items: center;
+    border-width: 0px;
+    padding: 2px 32px;
+    margin-left: 10px;
+    margin-right: 10px;
+
+    transition: all 0.2s ease;
+
+    &:hover {
+        background-color: #555C68;
+        /* 鼠标悬停时的背景色 */
+        cursor: pointer;
+    }
+
+    &:active {
+        background-color: #707A89;
+    }
+}
+
 .loginbutton {
     display: inline-block;
     /* 或者inline-flex等布局方式 */
