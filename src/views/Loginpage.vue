@@ -40,7 +40,7 @@ export default {
                 const response = await axios.post('http://localhost:5000/userlogin', { username: iusername.value, password: password.value });
                 console.log(response.data);
                 this.$userid.value = response.data.id;
-                this.$userimgurl.value = response.data.imgurl;
+                this.$userimgurl.value = "http://localhost:5000/ShowImg/UserImage/" + response.data.imgurl;
                 this.$username.value = response.data.username;
                 this.$router.push('/');
             } catch (error) {
