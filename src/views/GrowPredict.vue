@@ -61,7 +61,7 @@ export default {
                     }
                 });
 
-                this.imageUrl = "http://127.0.0.1:5000/ShowGrowImage/" + response.data.data;
+                this.imageUrl = "http://127.0.0.1:5000/ShowImg/GrowImage/" + response.data.data;
                 this.imgname = response.data.data
                 console.log(this.imageUrl);
             } catch (error) {
@@ -77,7 +77,7 @@ export default {
                 console.log({ imageid: this.imgname, modelid: "1" })
                 const response = await axios.post('http://localhost:5000/PredictImage', { imageid: this.imgname, modelid: "1" });
 
-                this.imageUrl = "http://127.0.0.1:5000/ShowPredictGrowImage" + this.imgname;
+                this.imageUrl = "http://127.0.0.1:5000/ShowImg/PredictGrowImage/" + this.imgname;
                 this.predictedImg = this.imageUrl;
                 this.result = response.data;
             } catch (error) {

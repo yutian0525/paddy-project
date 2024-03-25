@@ -59,7 +59,7 @@ export default {
             'Content-Type': 'multipart/form-data'
           }
         });
-        this.imageUrl = "http://127.0.0.1:5000/ShowDiseaseImage/" + response.data.data;
+        this.imageUrl = "http://127.0.0.1:5000/ShowImg/DiseaseImage/" + response.data.data;
         this.imgname = response.data.data
         console.log(this.imageUrl);
       } catch (error) {
@@ -74,7 +74,7 @@ export default {
         //formData.append('modelid', 1);
         console.log({ imageid: this.imgname, modelid: "1" })
         const response = await axios.post('http://localhost:5000/PredictImage', { imageid: this.imgname, modelid: "2" });
-        this.predictedImg = "http://127.0.0.1:5000/ShowPredictDiseaseImage/" + this.imgname;
+        this.predictedImg = "http://127.0.0.1:5000/ShowImg/PredictDiseaseImage/" + this.imgname;
         this.imageUrl = this.predictedImg;
         this.result = response.data;
       } catch (error) {
