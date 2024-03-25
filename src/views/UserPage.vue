@@ -33,6 +33,9 @@ export default {
                         'Content-Type': 'multipart/form-data'
                     }
                 });
+                if(response.code == 200){
+                  alert("上传成功！");
+                }
             } catch (error) {
                 console.error('Error uploading image:', error);
             }
