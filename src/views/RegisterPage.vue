@@ -39,8 +39,14 @@ export default {
         alert("两次密码输入不一致，请重新输入")
       } else {
         try {
-          const response = await axios.post('http://localhost:5000/usersignup', userData);
-          if (response.status === 200) {
+          const response = await axios.post('http://localhost:5000/usersignup', userData, {
+          headers: {
+            'Content-Type': 'application/json; charset=utf-8'
+          }
+        });
+          console.log(response.data)
+          
+          if (response.status == 200) {
             console.log(response.data);
             alert("注册成功");
             this.$router.push('/Loginpage');

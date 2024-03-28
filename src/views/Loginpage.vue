@@ -16,6 +16,7 @@
             <button class="thebutton" @click="login">登录</button>
             <button class="thebutton" @click="register">注册</button>
         </div>
+        <button class="thebutton" @click="test">注册</button>
     </div>
 </template>
     
@@ -41,8 +42,17 @@ export default {
                 console.log(response.data);
                 this.$userid.value = response.data.id;
                 this.$userimgurl.value = "http://localhost:5000/ShowImg/UserImage/" + response.data.imgurl;
-                this.$username.value = response.data.username;
+                this.$username.value = response.data.username.username;
                 this.$router.push('/');
+            } catch (error) {
+                console.error('Error:', error);
+            }
+        },
+        async test() {
+
+            try {
+                const response = await axios.post('http://localhost:8080/test');
+                console.log(response.data);
             } catch (error) {
                 console.error('Error:', error);
             }
