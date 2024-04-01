@@ -45,7 +45,9 @@ export default {
           }
         });
           console.log(response.data)
-          
+          if (response.status == 400) {
+            alert("用户名已存在，请重新输入");
+          }
           if (response.status == 200) {
             console.log(response.data);
             alert("注册成功");
