@@ -21,6 +21,7 @@
 
 <script >
 import * as echarts from "echarts";
+import { ElMessage } from 'element-plus'
 import axios from 'axios';
 import { ElInput } from "element-plus";
 
@@ -116,8 +117,15 @@ export default {
         console.log(formData);
         const response = await axios.post('http://localhost:5000/GetData/temperature', formData);
         console.log(response.data);
-        this.yData = response.data.yData;
-        this.initEcharts();
+        if(response.code == 200) {
+          this.yData = response.data.yData;
+          this.initEcharts();
+        }
+        if(response.code == 400){
+          ElMessage.error(response.data.error);
+        }
+
+
       } catch (error) {
         console.error('Error:', error);
       }
