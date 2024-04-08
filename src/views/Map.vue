@@ -1,13 +1,19 @@
 <!-- DigitalPaddy.vue -->
 <template>
   <div style="height: 55px;"></div>
+  <div>
   <el-select v-model="value1" placeholder="Select" size="default" style="width: 240px">
     <el-option v-for="item in clientlist" :key="item.value" :label="item.label" :value="item.value" />
   </el-select>
   <div v-if="value1">
-    <el-date-picker v-if="value1 == 'month'" v-model="monthdata" type="month" placeholder="Pick a month"/>
-    <el-date-picker v-if="value1 == 'year'" v-model="yeardata" type="year" placeholder="Pick a year"/>
-    <el-date-picker v-if="value1 == 'day'" v-model="daydata" type="date" placeholder="Pick a day"/>
+    <el-date-picker v-if="value1 == 'month'" v-model="monthdata" type="month" style="width: 240px" placeholder="Pick a month"/>
+    <el-date-picker v-if="value1 == 'year'" v-model="yeardata" type="year" style="width: 240px" placeholder="Pick a year"/>
+    <el-date-picker v-if="value1 == 'day'" v-model="daydata" type="date" style="width: 240px" placeholder="Pick a day"/>
+    <div v-if="value1 == 'manyyear'">
+      <el-date-picker v-model="startyear" type="year" placeholder="Pick start year" style="width: 240px"/>
+      <el-date-picker v-model="endyear" type="year" placeholder="Pick end year" style="width: 240px"/>
+    </div>
+  </div>
   </div>
   <ElButton @click="gettemputerdata">查看</ElButton>
   <div class="echart" id="mychart" :style="myChartStyle"></div>
@@ -28,6 +34,8 @@ export default {
       monthdata: null,
       yeardata: null,
       daydata: null,
+      startyear: null,
+      endyear: null,
       clientlist: [
         {
           value: "manyyear",
