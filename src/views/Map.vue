@@ -87,7 +87,7 @@ export default {
     test() {
       console.log(this.value1);
       console.log(this.yeardata);
-      this.xData = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
+      this.xData = [1, 2, 3, 4, 5, 6, 7];
       this.yData = [150, 230, 224, 218, 135, 147, 260];
       this.initEcharts();
     },
@@ -101,19 +101,21 @@ export default {
         if (this.value1 == "year") {
           formData.type = "year";
           formData.start = this.yeardata;
+          this.xData = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
         }
         if (this.value1 == "month") {
           formData.type = "month";
           formData.start = this.monthdata;
+          this.xData = [1,5,10,15,20,25,30];
         }
         if (this.value1 == "day") {
           formData.type = "day";
           formData.start = this.daydata;
+          this.xData = ["00:00", "01:00", "02:00", "03:00", "04:00", "05:00", "06:00", "07:00", "08:00", "09:00", "10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00", "17:00", "18:00", "19:00", "20:00", "21:00", "22:00", "23:00"]
         }
         console.log(formData);
         const response = await axios.post('http://localhost:5000/GetData/temperature', formData);
         console.log(response.data);
-        this.xData = response.data.xData;
         this.yData = response.data.yData;
         this.initEcharts();
       } catch (error) {

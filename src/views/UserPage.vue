@@ -1,5 +1,6 @@
 <script>
 import axios from 'axios';
+import { ElMessage } from 'element-plus'
 export default {
   data() {
         return {
@@ -12,7 +13,10 @@ export default {
       this.$userimgurl.value = null;
       this.$username.value = null;
       this.$router.push("/");
-      alert("已退出登录！");
+      ElMessage({
+        message: '已退出登录！',
+        type: 'success',
+      })
     },
     selectFile() {
       this.$refs.fileInput.click();

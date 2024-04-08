@@ -16,7 +16,7 @@
         <img src="./icons/密码.png" alt="p" class="miniimg" />
         <input class="myinputbox" type="confirmpassword" id="confirmpassword" v-model="confirmpassword" required placeholder="请再次输入密码" />
       </div>
-      <div style="height: 30px;"></div>
+      <div style="height: 10px;"></div>
       <button class="thebutton" @click="register">注册</button>
     </div>
   </div>
@@ -24,6 +24,7 @@
 
 <script>
 import axios from 'axios';
+import { ElMessage } from 'element-plus'
 export default {
   methods: {
     goToHome() {
@@ -36,7 +37,7 @@ export default {
       };
 
       if (this.password !== this.confirmpassword) {
-        alert("两次密码输入不一致，请重新输入")
+        ElMessage.error('两次密码输入不一致，请重新输入!')
       } else {
         try {
           const response = await axios.post('http://localhost:5000/usersignup', userData, {
@@ -46,11 +47,14 @@ export default {
         });
           console.log(response.data)
           if (response.status == 400) {
-            alert("用户名已存在，请重新输入");
+            ElMessage.error('用户名已存在，请重新输入!')
           }
           if (response.status == 200) {
             console.log(response.data);
-            alert("注册成功");
+            ElMessage({
+              message: '注册成功!',
+              type: 'success',
+            })
             this.$router.push('/Loginpage');
           }
         }
