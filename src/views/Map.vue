@@ -9,12 +9,13 @@
     <el-date-picker v-if="value1 == 'year'" v-model="yeardata" type="year" placeholder="Pick a year"/>
     <el-date-picker v-if="value1 == 'day'" v-model="daydata" type="date" placeholder="Pick a day"/>
   </div>
-  <ElButton @click="test">查看</ElButton>
+  <ElButton @click="gettemputerdata">查看</ElButton>
   <div class="echart" id="mychart" :style="myChartStyle"></div>
 </template>
 
 <script >
 import * as echarts from "echarts";
+import axios from 'axios';
 import { ElInput } from "element-plus";
 
 export default {
@@ -30,7 +31,7 @@ export default {
       clientlist: [
         {
           value: "manyyear",
-          label: "年季"
+          label: "年际"
         },
         {
           value: "year",
@@ -83,10 +84,26 @@ export default {
       this.initEcharts();
     },
     async gettemputerdata() {
-      console.log(starttime.value);
-      console.log(endtime.value);
+
       try {
-        const response = await axios.post('http://localhost:5000/GetData/temperature', { location: "1", type: "year", start: { year: "2022", month: "1", day: "0" }, length: { year: "0", month: "12", day: "0" } });
+        console.log(this.value1);
+        const formData = {
+          location: "1",
+        };
+        if (this.value1 == "year") {
+          formData.type = "year";
+          formData.start = this.yeardata;
+        }
+        if (this.value1 == "month") {
+          formData.type = "month";
+          formData.start = this.monthdata;
+        }
+        if (this.value1 == "day") {
+          formData.type = "day";
+          formData.start = this.daydata;
+        }
+        console.log(formData);
+        const response = await axios.post('http://localhost:5000/GetData/temperature', formData);
         console.log(response.data);
         this.xData = response.data.xData;
         this.yData = response.data.yData;
