@@ -9,6 +9,7 @@ import '@/views/style/div.css'
 import '@/views/style/text.css'
 import '@/views/style/animate.css'
 import App from './App.vue'
+import * as echarts from "echarts";
 
 const app = createApp(App)
 app.config.globalProperties.$userid = ref(null);

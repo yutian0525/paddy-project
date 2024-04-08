@@ -8,6 +8,7 @@ import ProjectIntroduction from './views/ProjectIntroduction.vue'
 import Loginpage from './views/Loginpage.vue'
 import RegisterPage from './views/RegisterPage.vue'
 import UserPage from './views/UserPage.vue'
+import Map from './views/Map.vue'
 const routes = [
   { path: '/', component: Home },
   { path: '/DigitalPaddy', component: DigitalPaddy },
@@ -16,7 +17,8 @@ const routes = [
   { path: '/ProjectIntroduction', component: ProjectIntroduction },
   { path: '/Loginpage', component: Loginpage },
   { path: '/RegisterPage',component: RegisterPage},
-  { path:'/UserPage',component:UserPage}
+  { path:'/UserPage',component:UserPage},
+  { path:'/Map',component:Map}
 ]
 
 const router = createRouter({

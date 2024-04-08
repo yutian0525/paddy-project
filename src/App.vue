@@ -5,7 +5,7 @@
       style="cursor: pointer;width: 31px;height: 31px;margin-top: 0px;margin-left: 20px;" />
     <h3 @click="gotohome" style="cursor: pointer;color: #eeeeee;margin-left: 20px;">智慧稻田大数据系统</h3>
     <div style="display: flex;height: 55px;justify-content: left;margin-left: 50px;">
-    <button class="barbutton" style="color:#46cdcf">首页</button>
+    <button class="barbutton" style="color:#46cdcf" @click="gotohome">首页</button>
     <button class="barbutton">关于水稻</button>
     <button class="barbutton">产品介绍</button>
     <button class="barbutton">帮助支持</button>

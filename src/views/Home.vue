@@ -12,7 +12,7 @@
           在地图上清晰直观的展示你所需要的数据，包括热力图、降雨分布、生长曲线等
         </p>
       </div>
-       <button class="mbutton" @click="goToPage('DigitalPaddy')">➜</button>
+       <button class="mbutton" @click="goToPage('Map')">➜</button>
     </div>
   </div>
   <div class="hscreen">
