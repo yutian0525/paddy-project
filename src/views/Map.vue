@@ -122,7 +122,7 @@ export default {
           this.initEcharts();
         }
         if(response.code == 400){
-          ElMessage.error(response.data.error);
+          ElMessage.error("请选择1981-2022年的时间");
         }
 
 
