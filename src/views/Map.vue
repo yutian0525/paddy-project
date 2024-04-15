@@ -117,11 +117,11 @@ export default {
         console.log(formData);
         const response = await axios.post('http://localhost:5000/GetData/temperature', formData);
         console.log(response.data);
-        if(response.code == 200) {
+        if(response.status === 200) {
           this.yData = response.data.yData;
           this.initEcharts();
         }
-        if(response.code == 400){
+        else{
           ElMessage.error("请选择1981-2022年的时间");
         }
 
