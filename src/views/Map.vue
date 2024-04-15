@@ -106,8 +106,13 @@ export default {
         }
         if (this.value1 == "month") {
           formData.type = "month";
+          if(this.monthdata.getMonth() == 1){
+            this.xData = [1,5,10,15,20,25];
+          }
+          else{
+            this.xData = [1,5,10,15,20,25,30];
+          }
           formData.start = this.monthdata;
-          this.xData = [1,5,10,15,20,25,30];
         }
         if (this.value1 == "day") {
           formData.type = "day";
