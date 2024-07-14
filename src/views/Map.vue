@@ -66,7 +66,8 @@ export default {
       this.$router.push('/')
     },
     initEcharts() {
-      const option = {
+      const 
+          option = {
         xAxis: {
           data: this.xData
         },
@@ -106,21 +107,27 @@ export default {
         }
         if (this.value1 == "month") {
           formData.type = "month";
-          if(this.monthdata.getMonth() == 1){
-            this.xData = [1,5,10,15,20,25];
-          }
-          else{
-            this.xData = [1,5,10,15,20,25,30];
-          }
           formData.start = this.monthdata;
+          this.xData = [1,5,10,15,20,25,30];
         }
         if (this.value1 == "day") {
           formData.type = "day";
           formData.start = this.daydata;
           this.xData = ["00:00", "01:00", "02:00", "03:00", "04:00", "05:00", "06:00", "07:00", "08:00", "09:00", "10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00", "17:00", "18:00", "19:00", "20:00", "21:00", "22:00", "23:00"]
         }
+        if (this.value1 == "manyyear") {
+          formData.type = "manyyear";
+          formData.start = this.startyear;
+          formData.end = this.endyear;
+          // 创建一个从 startyear 到 endyear 的数组
+          const startYearNumber = this.startyear.getFullYear();
+          const endYearNumber = this.endyear.getFullYear();
+          this.xData = Array.from({length: endYearNumber - startYearNumber + 1}, (_, i) => i + startYearNumber);
+        }
+        console.log("formData");
         console.log(formData);
         const response = await axios.post('http://localhost:5000/GetData/temperature', formData);
+        console.log("response.data");
         console.log(response.data);
         if(response.status === 200) {
           this.yData = response.data.yData;
