@@ -2,28 +2,32 @@
 <template>
   <div style="height: 55px;"></div>
   <div>
-  <el-select v-model="value1" placeholder="Select" size="default" style="width: 240px">
-    <el-option v-for="item in clientlist" :key="item.value" :label="item.label" :value="item.value" />
-  </el-select>
-  <div v-if="value1">
-    <el-date-picker v-if="value1 == 'month'" v-model="monthdata" type="month" style="width: 240px" placeholder="Pick a month"/>
-    <el-date-picker v-if="value1 == 'year'" v-model="yeardata" type="year" style="width: 240px" placeholder="Pick a year"/>
-    <el-date-picker v-if="value1 == 'day'" v-model="daydata" type="date" style="width: 240px" placeholder="Pick a day"/>
-    <div v-if="value1 == 'manyyear'">
-      <el-date-picker v-model="startyear" type="year" placeholder="Pick start year" style="width: 240px"/>
-      <el-date-picker v-model="endyear" type="year" placeholder="Pick end year" style="width: 240px"/>
+    <el-select v-model="value1" placeholder="Select" size="default" style="width: 240px">
+      <el-option v-for="item in clientlist" :key="item.value" :label="item.label" :value="item.value"/>
+    </el-select>
+    <div v-if="value1">
+      <el-date-picker v-if="value1 == 'month'" v-model="monthdata" type="month" style="width: 240px"
+                      placeholder="Pick a month"/>
+      <el-date-picker v-if="value1 == 'year'" v-model="yeardata" type="year" style="width: 240px"
+                      placeholder="Pick a year"/>
+      <el-date-picker v-if="value1 == 'day'" v-model="daydata" type="date" style="width: 240px"
+                      placeholder="Pick a day"/>
+      <div v-if="value1 == 'manyyear'">
+        <el-date-picker v-model="startyear" type="year" placeholder="Pick start year" style="width: 240px"/>
+        <el-date-picker v-model="endyear" type="year" placeholder="Pick end year" style="width: 240px"/>
+      </div>
     </div>
-  </div>
   </div>
   <ElButton @click="gettemputerdata">查看</ElButton>
   <div class="echart" id="mychart" :style="myChartStyle"></div>
+  <div class="map" id="map" :style="mapStyle"></div>
 </template>
 
-<script >
+<script>
 import * as echarts from "echarts";
-import { ElMessage } from 'element-plus'
+import {ElMessage} from 'element-plus'
 import axios from 'axios';
-import { ElInput } from "element-plus";
+import {ElInput} from "element-plus";
 
 export default {
   data() {
@@ -54,31 +58,54 @@ export default {
           value: "day",
           label: "日"
         }],
-      myChartStyle: { float: "left", width: "600px", height: "400px" } //图表样式
+      myChartStyle: {float: "left", width: "600px", height: "400px"},
+      map: null,
+      mapData: null,
+      mapStyle: {width: "800px", height: "800px", margin: "auto"},
+      //图表样式
+      option: {
+        title: {
+          text: '上海市地图',
+          x: 'center'
+        },
+        series: [
+          {
+            type: 'map',
+            map: '上海',
+            mapLocation: {
+              y: 60
+            },
+            itemSytle: {
+              emphasis: {label: {show: false}}
+            },
+          }
+        ],
+      }
     };
   },
-  /*
   mounted() {
-    this.initEcharts();
-  },*/
+    this.$nextTick(() => {
+      this.getMapData();
+    });
+  },
   methods: {
     goToHome() {
       this.$router.push('/')
     },
     initEcharts() {
-      const 
+      const
           option = {
-        xAxis: {
-          data: this.xData
-        },
-        yAxis: {},
-        series: [
-          {
-            data: this.yData,
-            type: "line" // 类型设置为折线图
-          }
-        ]
-      };
+            xAxis: {
+              data: this.xData
+            },
+            yAxis: {},
+            series: [
+              {
+                data: this.yData,
+                type: "line" // 类型设置为折线图
+              }
+            ]
+          };
       this.myChart = echarts.init(document.getElementById("mychart"));
       this.myChart.setOption(option);
       //随着屏幕大小调节图表
@@ -108,7 +135,7 @@ export default {
         if (this.value1 == "month") {
           formData.type = "month";
           formData.start = this.monthdata;
-          this.xData = [1,5,10,15,20,25,30];
+          this.xData = [1, 5, 10, 15, 20, 25, 30];
         }
         if (this.value1 == "day") {
           formData.type = "day";
@@ -129,20 +156,32 @@ export default {
         const response = await axios.post('http://localhost:5000/GetData/temperature', formData);
         console.log("response.data");
         console.log(response.data);
-        if(response.status === 200) {
+        if (response.status === 200) {
           this.yData = response.data.yData;
           this.initEcharts();
-        }
-        else{
+        } else {
           ElMessage.error("请选择1981-2022年的时间");
         }
-
-
       } catch (error) {
         console.error('Error:', error);
       }
-    }
-  }
+    },
+    async getMapData() {
+      try {
+        const response = await axios.get('https://geo.datav.aliyun.com/areas_v3/bound/geojson?code=310000_full');
+        this.mapData = response.data;
+        this.initmap();
+      } catch (error) {
+        console.error('Error getting map data:', error);
+      }
+    },
+    initmap() {
+      this.map = echarts.init(document.getElementById('map'));
+      echarts.registerMap('上海', this.mapData);
+      this.map.setOption(this.option);
+    },
+  },
+
 }
 </script>
 <style></style>
